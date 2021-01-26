@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% for review in reviews %}
+    <section class="box feature">
+        <a href="{% url 'bk_review' review.id %}" class="image featured"><img src="{{ review.get_image }}"   alt=""/></a>
+            <div class="inner">
+                <header>
+                    <h2>{{ review.title }}</h2>
+                    <p>Here's another intriguing subtitle</p>
+                </header>
+                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+            </div>
+    </section>
+{% endfor %}
+
+{% endblock %}

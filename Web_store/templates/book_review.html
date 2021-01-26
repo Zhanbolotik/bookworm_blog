@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div class="container">
+						<div class="row gtr-#200">
+							<div class="col-4 col-12-medium">
+								<div id="sidebar">
+
+									<!-- Sidebar -->
+
+									<footer>
+										<a href="https://www.google.com/search?channel=fs&client=ubuntu&q={{book.title}}" class="button icon solid fa-info-circle">Find out more</a>
+									</footer>
+
+
+								</div>
+							</div>
+							<div class="col-8 col-12-medium imp-medium">
+								<div id="content">
+
+									<!-- Content -->
+										<article>
+
+											<h2>{{ book.title }}</h2>
+											<span class="image object">
+        										<img src="{{ book.get_image }}" style="width:500px; height:500px;" alt=""/>
+    										</span>
+
+											<h3>written by {{ book.author }}</h3>
+
+											<p>{{ book.description }}</p>
+
+
+											<a><i class="fas fa-edit"></i> </a>
+
+										</article>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+{%endblock%}

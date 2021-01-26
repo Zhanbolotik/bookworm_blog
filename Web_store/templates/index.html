@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+			<!-- Banner -->
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Books may change the world</h2>
+								<p>It's a blog for sharing reviews for read books.</p>
+							</div>
+							<div class="col-5 col-12-medium">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Features -->
+				<div id="features-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-4 col-12-medium">
+
+
+								<!-- Box -->
+								{% for review in page_obj %}
+									<section class="box feature">
+										<a href="{% url 'bk_review' review.id %}" class="image featured"><img src="{{ review.get_image }}"   alt=""/></a>
+										<div class="inner">
+											<header>
+												<h2>{{ review.title }}</h2>
+												<p>Here's another intriguing subtitle</p>
+											</header>
+											<p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+										</div>
+									</section>
+								{% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-4 col-12-medium">
+
+								<!-- Sidebar -->
+									<div id="sidebar">
+										<section class="widget thumbnails">
+											<h3>Interesting stuff</h3>
+
+											<a href="https://www.google.com/search?channel=fs&client=ubuntu&q=reading+more+effectively" class="button icon fa-file-alt">More</a>
+										</section>
+									</div>
+
+							</div>
+							<div class="col-8 col-12-medium imp-medium">
+
+								<!-- Content -->
+									<div id="content">
+										<section class="last">
+											<h2>So what's this all about?</h2>
+											<p>Reading makes us smarter</p>
+											<p>Ultimate goal is to make people read more books.</p>
+											<a href="#" class="button icon solid fa-arrow-circle-right">Continue Reading</a>
+										</section>
+									</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav aria-label="...">
+  					<ul class="pagination pagination-sm">
+						{% if page_obj.has_previous %}
+						<li class="page-item"><a class="page-link" href="{% url 'home' %}?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+    					{% endif %}
+
+						<li class="page-item active" aria-current="page">
+      						<span class="page-link">{{ page_obj.number }}</span>
+    					</li>
+						{% if page_obj.has_next %}
+    					<li class="page-item"><a class="page-link" href="{% url 'home' %}?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+  						{% endif %}
+					</ul>
+				</nav>
+{% endblock %}
